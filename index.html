@@ -63,7 +63,12 @@ nav.scrolled{background:rgba(15,14,12,0.97);border-bottom:0.5px solid rgba(201,1
 .mobile-menu a:hover{color:var(--gold)}
 
 /* ===== HERO ===== */
-.hero{height: calc(100vh - 68px);;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero{
+  height: calc(100vh );
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+}
 .hero-video-wrap{position:absolute;inset:0;z-index:0}
 .hero-video-wrap img.hero-bg-img{width:100%;height:100%;object-fit:cover;opacity:0.22}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,14,12,0.92) 0%,rgba(15,14,12,0.6) 60%,rgba(15,14,12,0.85) 100%);z-index:1}
@@ -82,14 +87,36 @@ nav.scrolled{background:rgba(15,14,12,0.97);border-bottom:0.5px solid rgba(201,1
 .btn-primary:hover{background:var(--gold-lt);transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--text);padding:15px 32px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;border:0.5px solid rgba(240,234,216,0.3);cursor:pointer;font-family:var(--sans);font-weight:300;transition:all .25s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.hero-stats{position:absolute;bottom: 0px;;left:0;right:0;z-index:3;background:rgba(15,14,12,0.85);backdrop-filter:blur(16px);border-top:0.5px solid rgba(201,168,76,0.15);display:flex;animation:fadeUp .8s .9s both}
-.hero-stat{flex:1;padding:22px 24px;text-align:flex;border-right:0.5px solid rgba(201,168,76,0.12)}
+
+
+.hero-stats{
+  position:flex;
+  margin-bottom: 0px;  /* IMPORTANT FIX */
+  left:0;
+  right:0;
+  z-index:5;
+  background:rgba(15,14,12,0.85);
+  backdrop-filter:blur(16px);
+  border-top:0.5px solid rgba(201,168,76,0.15);
+  border-bottom:0.5px solid rgba(201,168,76,0.15);
+  border-right:0.5px solid rgba(201,168,76,0.15);
+  border-left:0.5px solid rgba(201,168,76,0.15);
+  display:flex;
+  width: 100%;
+}
+.hero-stat{flex:1;padding:22px 24px;text-align:center;border-right:0.5px solid rgba(201,168,76,0.12)}
 .hero-stat:last-child{border-right:none}
 .stat-num{font-family:var(--serif);font-size:32px;color:var(--gold);font-weight:600;line-height:1}
-.stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:px}
+.stat-label{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:9px; /* fixed */
+}
 
 /* ===== SECTIONS ===== */
-section{padding:100px 5vw}
+section{padding:20px 5vw;margin-top: 0%;}
 .section-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
 .section-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
 .section-title{font-family:var(--serif);font-size:clamp(30px,4.5vw,54px);font-weight:300;color:var(--text);line-height:1.15;margin-bottom:16px}
@@ -97,7 +124,7 @@ section{padding:100px 5vw}
 
 /* ===== SERVICES ===== */
 
-.services{background:var(--mid);
+.services{background:var(--mid);}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,0.1);margin-top:56px}
 .service-card{background:var(--mid);padding:40px 32px;transition:all .35s;cursor:pointer;position:relative;overflow:hidden}
 .service-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s}
@@ -330,6 +357,31 @@ footer{background:rgba(10,9,8,1);padding:64px 5vw 32px;border-top:0.5px solid rg
   .process-steps{grid-template-columns:1fr 1fr}
   .elevation-grid{grid-template-columns:1fr}
   .underprocess-grid{grid-template-columns:1fr 1fr}
+  @media(max-width:768px){
+  section{
+    padding: 80px 5vw;
+  }
+
+  .hero{
+    height: auto;
+    padding-bottom: 0px;
+   
+  }
+
+  .hero-stats{
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  @media(max-width:768px){
+  .hero-stats{
+    flex-wrap: wrap;
+  }
+
+  .hero-stat{
+    width: 100%;
+  }
+}
+}
 }
 </style>
 </head>
@@ -414,11 +466,27 @@ footer{background:rgba(10,9,8,1);padding:64px 5vw 32px;border-top:0.5px solid rg
       <a class="btn-outline" href="#gallery"><i class="fas fa-images"></i> View Our Work</a>
     </div>
   </div>
+  
+</section>
+
+<section class="stats-section">
   <div class="hero-stats">
-    <div class="hero-stat"><div class="stat-num">150+</div><div class="stat-label">Projects Completed</div></div>
-    <div class="hero-stat"><div class="stat-num">8+</div><div class="stat-label">Years Experience</div></div>
-    <div class="hero-stat"><div class="stat-num">500+</div><div class="stat-label">Happy Clients</div></div>
-    <div class="hero-stat"><div class="stat-num">100%</div><div class="stat-label">On-Time Delivery</div></div>
+    <div class="hero-stat">
+      <div class="stat-num">150+</div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">8+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">On-Time Delivery</div>
+    </div>
   </div>
 </section>
 
